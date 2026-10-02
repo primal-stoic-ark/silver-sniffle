@@ -25,31 +25,19 @@ js/main.js
 assets/        images, favicon
 ```
 
-## Previewing changes
+## Viewing and deployment
 
-After every change to `index.html`, `css/` or `js/`, refresh the private preview artifact:
+The site is hosted on GitHub Pages: https://primal-stoic-ark.github.io/silver-sniffle/
 
-1. Build a single-file copy in the scratchpad (never commit it):
-   - take the `<title>` and the `<body>` contents from `index.html`
-     (drop the doctype and the `<html>`, `<head>` and `<body>` wrappers; the viewer adds its own)
-   - inline `css/style.css` in a `<style>` tag
-   - add `<script>document.documentElement.classList.add('js');</script>` before the body content
-   - inline `js/main.js` in a `<script>` at the end
-   - title: `Silver Sniffle Skeleton`
-2. Publish it with the Artifact tool to the existing URL:
-   https://claude.ai/artifact/NuNTrz3BkLnKyLTcUgfm8a
-   (pass it as `url` from a new session; read it first, then republish).
-3. Give the user the link.
-
-Known preview limits: `mailto:` links may not work inside the viewer.
+- `.github/workflows/pages.yml` deploys on every push to `main` (and, temporarily, to
+  `claude/sweet-volta-okjrqi`, the current default branch). It can also be run by hand.
+- Only `index.html`, `css/`, `js/` and `assets/` are published.
+- Actions are pinned to full commit SHAs (with the version in a comment). When updating
+  one, look up the new tag's SHA from the official `actions/*` repo.
+- Asset paths must stay relative (`css/style.css`, not `/css/style.css`), because the site
+  is served from the `/silver-sniffle/` subpath.
 
 Before pushing, check desktop (1280px) and mobile (375px) widths in headless Chromium:
 no console errors, no horizontal scroll, and the mobile menu opens and closes.
 
 Local viewing: `python3 -m http.server 8000`, then http://localhost:8000.
-
-## Hosting (not decided yet)
-
-The repo is private. GitHub Pages would make the site public and needs a paid plan for
-private repos. Cloudflare Pages or Netlify are the alternatives. Until one is chosen,
-the artifact preview above is the way to view the site.
