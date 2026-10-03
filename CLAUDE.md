@@ -18,6 +18,12 @@ Static single-page website skeleton. Content and visual design get added later.
 - Footer: copyright only. The year is set by JS, with a static fallback year in the HTML.
 - Page language English (`lang="en"`), basic meta only (title, description, favicon).
 
+## Design skill
+
+`.claude/skills/frontend-design/` is Anthropic's official frontend-design skill (see its
+`SOURCE.md`), vendored because plugins don't load in cloud sessions. Use it when styling or
+reshaping the UI. The KISS rules above still win: plain HTML+CSS, minimal JS, no dependencies.
+
 ## Structure
 
 ```
