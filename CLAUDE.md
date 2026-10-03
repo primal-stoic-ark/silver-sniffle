@@ -5,13 +5,15 @@ Static single-page website skeleton. Content and visual design get added later.
 ## Requirements
 
 - Plain HTML + CSS only. No frameworks, no build step, no package manager.
-- Vanilla JS only where needed, kept minimal. Currently: copyright year, mobile menu toggle.
+- Vanilla JS only where needed, kept minimal. Currently: copyright year, mobile menu toggle, active menu link.
 - Single page; top navigation links to in-page sections (`#home`, `#about`, `#services`, `#contact`).
 - Sticky header; hamburger toggle below 768px. Without JS the menu stays visible.
 - Smooth scrolling via CSS (`scroll-behavior`), disabled under `prefers-reduced-motion`.
   Sections use `scroll-margin-top` so the sticky header doesn't cover them.
 - Responsive: must work at phone width (~375px) with no horizontal scroll.
 - CSS is structural; colors, fonts and spacing live as variables in `:root` in `css/style.css`.
+- Dark mode is automatic via `prefers-color-scheme` (no manual toggle). Fonts: system stack only.
+- The menu link of the section in view gets `aria-current` (small IntersectionObserver in `js/main.js`).
 - Placeholder copy is lorem ipsum until real content is provided.
 - Footer: copyright only. The year is set by JS, with a static fallback year in the HTML.
 - Page language English (`lang="en"`), basic meta only (title, description, favicon).

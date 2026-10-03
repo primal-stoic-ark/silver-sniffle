@@ -2,10 +2,14 @@
    Variables
    ========================================================== */
 :root {
+  color-scheme: light dark;
+
   --color-bg: #fff;
+  --color-surface: #fff;
   --color-text: #222;
   --color-muted: #666;
   --color-accent: #0055cc;
+  --color-on-accent: #fff;
   --color-border: #ddd;
 
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -15,6 +19,18 @@
   --gutter: 1rem;
   --header-height: 4rem;
   --section-padding: 4rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #121417;
+    --color-surface: #121417;
+    --color-text: #e6e8eb;
+    --color-muted: #9aa0a6;
+    --color-accent: #6ea8fe;
+    --color-on-accent: #0b0b0b;
+    --color-border: #2e3238;
+  }
 }
 
 /* ==========================================================
@@ -49,6 +65,11 @@ h2 { font-size: clamp(1.5rem, 3vw + 1rem, 2.25rem); }
 
 a { color: var(--color-accent); }
 
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
 /* ==========================================================
    Layout
    ========================================================== */
@@ -69,6 +90,7 @@ a { color: var(--color-accent); }
 
 .hero {
   min-height: calc(100vh - var(--header-height));
+  min-height: calc(100svh - var(--header-height));
   display: flex;
   align-items: center;
 }
@@ -88,7 +110,7 @@ a { color: var(--color-accent); }
   display: inline-block;
   padding: 0.75rem 1.5rem;
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-on-accent);
   text-decoration: none;
 }
 
@@ -101,7 +123,7 @@ a { color: var(--color-accent); }
   top: -100%;
   z-index: 200;
   padding: 0.5rem 1rem;
-  background: var(--color-bg);
+  background: var(--color-surface);
 }
 .skip-link:focus { top: 0.5rem; }
 
@@ -112,7 +134,7 @@ a { color: var(--color-accent); }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--color-bg);
+  background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -141,7 +163,7 @@ a { color: var(--color-accent); }
 }
 
 .nav__menu a:hover,
-.nav__menu a:focus-visible { color: var(--color-accent); }
+.nav__menu a[aria-current] { color: var(--color-accent); }
 
 /* hamburger button: hidden on desktop */
 .nav__toggle {
@@ -202,7 +224,7 @@ a { color: var(--color-accent); }
     flex-direction: column;
     gap: 0;
     padding: 0.5rem var(--gutter) 1rem;
-    background: var(--color-bg);
+    background: var(--color-surface);
     border-bottom: 1px solid var(--color-border);
   }
 
