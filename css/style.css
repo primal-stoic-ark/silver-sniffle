@@ -88,6 +88,8 @@ a { color: var(--color-accent); }
 
 .section > .container > * + * { margin-top: 1rem; }
 
+.section p { max-width: 65ch; }
+
 .hero {
   min-height: calc(100vh - var(--header-height));
   min-height: calc(100svh - var(--header-height));
